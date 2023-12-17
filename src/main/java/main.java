@@ -1,7 +1,7 @@
 import java.util.Scanner;
 public class main {
     public static void main(String[] args) {
-        int type, i;
+        int i;
         double e, s = 0, p = 0;
         double[] sides = new double[3];
         square one = null;
@@ -9,9 +9,9 @@ public class main {
         triangle three = null;
         Scanner in = new Scanner(System.in);
         System.out.print("\n1-квадрат\n2-круг\n3-треугольник\nВыберите фигуру:");
-        type = in.nextInt();
+        figure.setType(in.nextInt());
         //Ввод и обработка
-        switch (type) {
+        switch (figure.type) {
             case 1:
                 System.out.print("Длина стороны квадрата:");
                 e = in.nextDouble();
@@ -35,7 +35,7 @@ public class main {
         }
         //Вывод результатов
         System.out.print("Фигура: ");
-        switch (type) {
+        switch (figure.type) {
             case 1:
                 System.out.print("квадрат");
                 e = one.getDiagonal();
@@ -52,20 +52,21 @@ public class main {
                 break;
             case 3:
                 i = three.getView();
+                String view = null, line = "треугольник";
                 switch (i) {
                     case 1:
-                        System.out.print("равносторонний ");
+                        view = "равносторонний ";
                         break;
                     case 2:
-                        System.out.print("равнобедренный ");
+                        view = "равнобедренный ";
                         break;
                     case 3:
-                        System.out.print("разносторонний ");
+                        view = "разносторонний ";
                         break;
                     default:
                         ;
                 }
-                System.out.print("треугольник");
+                System.out.print(view + line);
                 s = three.getArea();
                 p = three.getPerimeter();
                 break;
